@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">Sonar Minefield</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_show_game_splash">Sonar Minefield</string>
+    <string name="title_activity_play_game">Clear the minefield!</string>
+    <string name="button">Reset</string>
+    <string name="title_activity_show_game_outcome">Result:</string>
+    <string name="instructions">How to play this game: Select the amount of mines to be deployed to the field and hit \'play\'. Then, you must clear the entire minefield without hitting a mine.</string>
+
+</resources>
