@@ -8,5 +8,9 @@
     <string name="button">Reset</string>
     <string name="title_activity_show_game_outcome">Result:</string>
     <string name="instructions">How to play this game: Select the amount of mines to be deployed to the field and hit \'play\'. Then, you must clear the entire minefield without hitting a mine.</string>
-
+	<string name="title_activity_option_reset">Reset mines to default</string>
+	<string name="playgame_activity_option_quit">Quit to title</string>
+	<string name="playgame_activity_option_poke">Reveal</string>
+	<string name="playgame_activity_option_flag">Set flags</string>
+	<string name="outcome_activity_option_back">Back</string>
 </resources>

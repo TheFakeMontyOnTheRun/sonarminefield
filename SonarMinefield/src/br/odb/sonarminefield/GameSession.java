@@ -17,6 +17,7 @@ public class GameSession {
 	public static final int POSITION_MINE = 9;
 	public static final int POSITION_COVERED = 10;
 	public static final int POSITION_MINE_POKED = 11;
+	public static final int POSITION_FLAGGED = 12;
 	public static final int POSITION_BLANK = 0;
 	
 	public static final int GAMESTATE_NOTSTARTED = 0;
@@ -26,6 +27,7 @@ public class GameSession {
 	
 	private int[][] map;
 	private boolean[][] covered;
+	private boolean[][] flagged;
 	private int remainingTilesToClear;
 	private int mines;
 	
@@ -34,13 +36,17 @@ public class GameSession {
 	public GameSession() {
 		map = new int[ WIDTH ][];
 		covered = new boolean[ WIDTH ][];
+		flagged = new boolean[ WIDTH ][];
 		
 		for ( int c = 0; c < WIDTH; ++c ) {
+			
 			map[ c ] = new int[ HEIGHT ];
 			covered[ c ] = new boolean[ HEIGHT ];
+			flagged[ c ] = new boolean[ HEIGHT ];
 			
 			for ( int d = 0; d < HEIGHT; ++d ) {
 				covered[ c ][ d ] = true;
+				flagged[ c ][ d ] = false;
 				map[ c ][ d ] = POSITION_BLANK;
 			}
 		}
@@ -133,21 +139,33 @@ public class GameSession {
 		if ( x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT )
 			return;
 		
+		if ( flagged[ x][ y ] )	{
+			
+			flagged[ x ][ y ] = false;
+			return;
+		}
 		
 		
 		switch ( map[ x ][ y ] ) {
 			case POSITION_MINE:
+				
 				 map[ x ][ y ] = this.POSITION_MINE_POKED;
 				gameState = this.GAMESTATE_GAMEOVER;
 				return;
-			case POSITION_BLANK:
-				floodUncover( x, y );
-				//break;
-				
+
+			case POSITION_BLANK:					
+					floodUncover( x, y );
+					
+					if ( covered[ x ][ y ] && !flagged[ x ][ y ] )
+						this.remainingTilesToClear--;
+					
+					covered[ x ][ y ] = false;					
 			default:
-				if ( covered[ x ][ y ] )
-					this.remainingTilesToClear--;
-				covered[ x ][ y ] = false;
+					
+					if ( covered[ x ][ y ]  )
+						this.remainingTilesToClear--;
+					
+					covered[ x ][ y ] = false;
 		}
 		
 		if ( this.remainingTilesToClear == mines )
@@ -158,7 +176,7 @@ public class GameSession {
 
 
 	private void floodUncover(int x, int y) {
-		if ( covered[ x ][ y ] ) {
+		if ( covered[ x ][ y ] && !flagged[ x ][ y ] ) {
 			
 			if ( map[ x ][ y ] == POSITION_BLANK ) {
 				
@@ -213,6 +231,17 @@ public class GameSession {
 	}
 
 	public void uncoverAt(int x, int y) {
-		covered[ x ][ y ] = false;		
+		covered[ x ][ y ] = false;
+		flagged[ x ][ y ] = false;
+	}
+
+	public void flag(int x, int y) {
+		
+		flagged[ x ][ y ] = !flagged[ x ][ y ];		
+	}
+
+	public boolean isFlaggedAt(int x, int y) {
+
+		return flagged[ x ][ y ];
 	}
 }

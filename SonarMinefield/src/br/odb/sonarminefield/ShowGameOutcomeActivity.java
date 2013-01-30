@@ -3,6 +3,7 @@ package br.odb.sonarminefield;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,6 +35,12 @@ public class ShowGameOutcomeActivity extends Activity implements OnClickListener
         getMenuInflater().inflate(R.menu.activity_show_game_outcome, menu);
         return true;
     }
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		finish();
+		return true;
+	}
 
 	public void onClick(View v) {
 		finish();		

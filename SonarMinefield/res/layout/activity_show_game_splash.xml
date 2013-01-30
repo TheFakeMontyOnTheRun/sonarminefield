@@ -43,7 +43,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Note: this is a first release. It was made, literally, over 24 hours. Expect updates very soon"
+        android:text="Version 1.0.1. I will try to keep updating it frequently. Please, give me some feedback!"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </LinearLayout>

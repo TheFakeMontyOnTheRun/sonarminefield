@@ -1,9 +1,17 @@
 package br.odb.sonarminefield;
 
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -27,13 +35,9 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener,
     	skMines.setOnSeekBarChangeListener( this );
         btnNext = (Button) findViewById( R.id.btnNext );
         btnNext.setOnClickListener( this );        
-        tryRestoringContext( savedInstanceState );
+        this.restoreData();
         updateMinesText();
-    }
-    
-    public void tryRestoringContext( Bundle savedInstanceState ) {
-    	//tenta recuperar as configurações da ultima partida.
-    }
+    }    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,6 +54,12 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener,
 		this.startActivityForResult( intent, 1 );		
 	}
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		skMines.setProgress( 25 );
+		return true;
+	}
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (requestCode == 1) {
@@ -94,5 +104,61 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	@Override
+	protected void onDestroy() {
+	
+		this.saveData();
+		
+		super.onDestroy();
+	}
+
+	private void saveData() {
+    	
+    	String FILENAME = "data.dat";
+    	
+    	int mines;
+    	FileOutputStream fos;
+
+    	
+		try {
+			fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);			
+			mines = skMines.getProgress();
+	    	fos.write( mines );
+	    	
+	    	
+	    	fos.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
+    
+    private void restoreData() {
+    	String FILENAME = "data.dat";    	
+    	FileInputStream fis;
+    	int mines;
+    	
+		try {
+			fis = openFileInput( FILENAME );
+
+	    	mines = fis.read();
+	    	skMines.setProgress( mines );
+	    	fis.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }	
 	
 }
