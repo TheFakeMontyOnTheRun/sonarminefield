@@ -1,6 +1,5 @@
 package br.odb.sonarminefield;
 
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -27,6 +26,7 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener,
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_game_splash);
         

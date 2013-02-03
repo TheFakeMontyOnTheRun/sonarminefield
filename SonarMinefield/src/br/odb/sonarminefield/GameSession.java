@@ -231,17 +231,41 @@ public class GameSession {
 	}
 
 	public void uncoverAt(int x, int y) {
-		covered[ x ][ y ] = false;
-		flagged[ x ][ y ] = false;
+		
+		if ( isValid( x, y ) ) {
+			covered[ x ][ y ] = false;
+			flagged[ x ][ y ] = false;
+		}
 	}
 
 	public void flag(int x, int y) {
 		
-		flagged[ x ][ y ] = !flagged[ x ][ y ];		
+		if ( isValid( x, y ) )		
+			flagged[ x ][ y ] = !flagged[ x ][ y ];		
 	}
 
 	public boolean isFlaggedAt(int x, int y) {
 
-		return flagged[ x ][ y ];
+		if ( isValid( x, y ) )
+			return flagged[ x ][ y ];
+		else
+			return false;
+	}
+
+	private boolean isValid(int x, int y) {
+	
+		if ( x < 0 )
+			return false;
+		
+		if ( y < 0 )
+			return false;
+
+		if ( x >= WIDTH )
+			return false;
+
+		if ( y >= HEIGHT )
+			return false;
+		
+		return true;
 	}
 }

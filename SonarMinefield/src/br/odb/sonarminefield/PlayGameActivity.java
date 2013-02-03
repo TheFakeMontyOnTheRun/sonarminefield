@@ -48,6 +48,9 @@ public class PlayGameActivity extends Activity {
 			case R.id.menu_settings_poke:
 				gameBoard.setToPoke();
 			break;
+			case R.id.menu_settings_move:
+				gameBoard.setToMove();
+				break;
 			case R.id.menu_settings_quit_to_menu:
 				finish();
 			break;

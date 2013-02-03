@@ -30,11 +30,12 @@ public final class R {
     public static final class id {
         public static final int btnBack=0x7f070001;
         public static final int btnNext=0x7f070006;
-        public static final int menu_settings_flag=0x7f070009;
-        public static final int menu_settings_outcome=0x7f07000b;
+        public static final int menu_settings_flag=0x7f07000a;
+        public static final int menu_settings_move=0x7f070009;
+        public static final int menu_settings_outcome=0x7f07000c;
         public static final int menu_settings_poke=0x7f070008;
-        public static final int menu_settings_quit_to_menu=0x7f07000a;
-        public static final int menu_settings_splash=0x7f07000c;
+        public static final int menu_settings_quit_to_menu=0x7f07000b;
+        public static final int menu_settings_splash=0x7f07000d;
         public static final int skMines=0x7f070004;
         public static final int textView1=0x7f070002;
         public static final int textView2=0x7f070003;
@@ -57,8 +58,9 @@ public final class R {
         public static final int hello_world=0x7f040001;
         public static final int instructions=0x7f040007;
         public static final int menu_settings=0x7f040002;
-        public static final int outcome_activity_option_back=0x7f04000c;
+        public static final int outcome_activity_option_back=0x7f04000d;
         public static final int playgame_activity_option_flag=0x7f04000b;
+        public static final int playgame_activity_option_move=0x7f04000c;
         public static final int playgame_activity_option_poke=0x7f04000a;
         public static final int playgame_activity_option_quit=0x7f040009;
         public static final int title_activity_option_reset=0x7f040008;

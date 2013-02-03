@@ -35,7 +35,8 @@ public class GameBoard extends View implements OnTouchListener {
 	PlayGameActivity manager;
 	long touchMilis;
 	boolean holdingTouch;
-	private boolean shouldSetFlag;
+
+	private MinefieldOperations playerAction = MinefieldOperations.POKE;
 
 	public GameBoard(Context appContext, AttributeSet attrs, int defStyle) {
 		super(appContext, attrs, defStyle);
@@ -125,7 +126,7 @@ public class GameBoard extends View implements OnTouchListener {
 		int newWidth = getWidth() / gameSession.getWidth();
 		int newHeight = getHeight() / gameSession.getHeight();
 
-		if (newWidth >= newHeight)
+		if (newWidth <= newHeight)
 			smaller = newHeight;
 		else
 			smaller = newWidth;
@@ -192,7 +193,7 @@ public class GameBoard extends View implements OnTouchListener {
 		touch.x = cameraPosition.x + ((event.getX()));
 		touch.y = cameraPosition.y + ((event.getY()));
 
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
+		if (event.getAction() == MotionEvent.ACTION_DOWN || ( playerAction != MinefieldOperations.MOVE ) ) {
 
 			int downX;
 			int downY;
@@ -200,7 +201,7 @@ public class GameBoard extends View implements OnTouchListener {
 			int newHeight = getHeight() / gameSession.getHeight();
 			int smaller;
 
-			if (newWidth >= newHeight)
+			if (newWidth <= newHeight)
 				smaller = newHeight;
 			else
 				smaller = newWidth;
@@ -208,10 +209,13 @@ public class GameBoard extends View implements OnTouchListener {
 			downX = (int) ( ( touch.x / smaller) );
 			downY = (int) ( ( touch.y / smaller) );
 
-			if (shouldSetFlag)
+			if ( this.playerAction == MinefieldOperations.FLAG )
 				gameSession.flag(downX, downY);
-			else
+			else if ( this.playerAction == MinefieldOperations.POKE )				
 				gameSession.poke(downX, downY);
+			else {
+				
+			}
 
 			this.invalidate();
 
@@ -224,7 +228,7 @@ public class GameBoard extends View implements OnTouchListener {
 			lastTouchPosition.y = (int) event.getY();
 
 			return true;
-		} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+		} else if (event.getAction() == MotionEvent.ACTION_MOVE && playerAction == MinefieldOperations.MOVE ) {
 
 			cameraScroll.x += (event.getX() - lastTouchPosition.x);
 			cameraScroll.y += (event.getY() - lastTouchPosition.y);
@@ -253,11 +257,11 @@ public class GameBoard extends View implements OnTouchListener {
 
 		}
 
-		if (cameraPosition.x < 0)
-			cameraPosition.x = 0;
+		if (cameraPosition.x < -getWidth() + smaller )
+			cameraPosition.x = -getWidth() + smaller;
 
-		if (cameraPosition.y < 0)
-			cameraPosition.y = 0;
+		if (cameraPosition.y < -getHeight() + smaller )
+			cameraPosition.y = -getHeight() + smaller;
 		
 		if ( cameraPosition.x > ( this.getWidth() - smaller ) )
 			cameraPosition.x = getWidth() - smaller;
@@ -272,11 +276,16 @@ public class GameBoard extends View implements OnTouchListener {
 
 	public void setToFlag() {
 
-		shouldSetFlag = true;
+		playerAction = MinefieldOperations.FLAG;		
 	}
 
 	public void setToPoke() {
 
-		shouldSetFlag = false;
+		playerAction = MinefieldOperations.POKE;
+	}
+
+	public void setToMove() {
+
+		playerAction = MinefieldOperations.MOVE;
 	}
 }
