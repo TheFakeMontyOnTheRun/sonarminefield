@@ -3,6 +3,7 @@
  */
 package br.odb.sonarminefield;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,12 +23,12 @@ import br.odb.droidlib.Vector2;
  * 
  */
 public class GameBoard extends View implements OnTouchListener {
+	
 	static int count;
 
 	private Vector2 cameraPosition;
-	private Vector2 cameraScroll;
 	private Vector2 lastTouchPosition;
-	private Vector2 accScroll;
+
 	int smaller;
 
 	GameSession gameSession;
@@ -60,7 +61,7 @@ public class GameBoard extends View implements OnTouchListener {
 			Intent intent = manager.getIntent();
 			intent.putExtra("result", gameSession.isVictory() ? "victory"
 					: "failure");
-			manager.setResult(manager.RESULT_OK, intent);
+			manager.setResult(Activity.RESULT_OK, intent);
 			manager.finish();
 		}
 	}
@@ -96,11 +97,8 @@ public class GameBoard extends View implements OnTouchListener {
 		palette[12] = BitmapFactory.decodeResource(appContext.getResources(),
 				R.drawable.flagged);
 
-		accScroll = new Vector2();
 		cameraPosition = new Vector2();
-		cameraScroll = new Vector2();
 		lastTouchPosition = new Vector2();
-
 
 		setToPoke();
 		this.setOnTouchListener(this);
@@ -108,7 +106,6 @@ public class GameBoard extends View implements OnTouchListener {
 
 	public void setSession(GameSession session) {
 		gameSession = session;
-		
 
 	}
 
@@ -131,7 +128,6 @@ public class GameBoard extends View implements OnTouchListener {
 		else
 			smaller = newWidth;
 
-
 		int pos;
 		Bitmap bitmap;
 		Paint paint = new Paint();
@@ -147,14 +143,13 @@ public class GameBoard extends View implements OnTouchListener {
 							bitmap = palette[GameSession.POSITION_FLAGGED];
 						else
 							bitmap = palette[GameSession.POSITION_COVERED];
-					// paint.setColor( Color.BLUE );
 					else {
 						bitmap = palette[pos];
 					}
-					rectDst.top = (int) (- cameraPosition.y + ( y * smaller ));
-					rectDst.left = (int) (- cameraPosition.x + ( x * smaller ));
-					rectDst.bottom = (int) (- cameraPosition.y + ( (y + 1) * smaller ) );
-					rectDst.right = (int) (- cameraPosition.x + ( (x + 1) * smaller ));
+					rectDst.top = (int) (-cameraPosition.y + (y * smaller));
+					rectDst.left = (int) (-cameraPosition.x + (x * smaller));
+					rectDst.bottom = (int) (-cameraPosition.y + ((y + 1) * smaller));
+					rectDst.right = (int) (-cameraPosition.x + ((x + 1) * smaller));
 
 					rectSrc.top = 0;
 					rectSrc.left = 0;
@@ -162,11 +157,6 @@ public class GameBoard extends View implements OnTouchListener {
 					rectSrc.bottom = bitmap.getHeight();
 
 					canvas.drawBitmap(bitmap, rectSrc, rectDst, paint);
-
-					// canvas.drawBitmap( bitmap, x * smaller, y * smaller,
-					// paint );
-					// canvas.drawRect( x * 50, y * 50 , ( x + 1 ) * 50, ( y + 1
-					// ) * 50, paint );
 				}
 			}
 		} else {
@@ -189,94 +179,78 @@ public class GameBoard extends View implements OnTouchListener {
 	public boolean onTouch(View v, MotionEvent event) {
 
 		Vector2 touch = new Vector2();
+		int downX;
+		int downY;
+		int newWidth = getWidth() / gameSession.getWidth();
+		int newHeight = getHeight() / gameSession.getHeight();
+		int smaller;
 
 		touch.x = cameraPosition.x + ((event.getX()));
 		touch.y = cameraPosition.y + ((event.getY()));
 
-		if (event.getAction() == MotionEvent.ACTION_DOWN || ( playerAction != MinefieldOperations.MOVE ) ) {
+		if (newWidth <= newHeight)
+			smaller = newHeight;
+		else
+			smaller = newWidth;
 
-			int downX;
-			int downY;
-			int newWidth = getWidth() / gameSession.getWidth();
-			int newHeight = getHeight() / gameSession.getHeight();
-			int smaller;
+		downX = (int) ((touch.x / smaller));
+		downY = (int) ((touch.y / smaller));
 
-			if (newWidth <= newHeight)
-				smaller = newHeight;
-			else
-				smaller = newWidth;
+		switch (playerAction) {
 
-			downX = (int) ( ( touch.x / smaller) );
-			downY = (int) ( ( touch.y / smaller) );
+		case POKE:
+			gameSession.poke(downX, downY);
+			break;
 
-			if ( this.playerAction == MinefieldOperations.FLAG )
+		case FLAG:
+
+			if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
 				gameSession.flag(downX, downY);
-			else if ( this.playerAction == MinefieldOperations.POKE )				
-				gameSession.poke(downX, downY);
-			else {
-				
 			}
+			break;
 
-			this.invalidate();
+		case MOVE:
 
-			if (gameSession.isFinished()) {
-				revealAll();
-				this.postDelayed(new FinishGameRunnable(), 5000);
+			if (event.getAction() == MotionEvent.ACTION_MOVE) {
+
+				cameraPosition.x += (lastTouchPosition.x - event.getX());
+				cameraPosition.y += (lastTouchPosition.y - event.getY());
 			}
+			break;
 
-			lastTouchPosition.x = (int) event.getX();
-			lastTouchPosition.y = (int) event.getY();
-
-			return true;
-		} else if (event.getAction() == MotionEvent.ACTION_MOVE && playerAction == MinefieldOperations.MOVE ) {
-
-			cameraScroll.x += (event.getX() - lastTouchPosition.x);
-			cameraScroll.y += (event.getY() - lastTouchPosition.y);
-
-			accScroll.x += (event.getX() - lastTouchPosition.x);
-			accScroll.y += (event.getY() - lastTouchPosition.y);
-
-			lastTouchPosition.x = (int) event.getX();
-			lastTouchPosition.y = (int) event.getY();
-
-			cameraPosition.x -= cameraScroll.x;
-			cameraPosition.y -= cameraScroll.y;
-
-			cameraScroll.x = 0;
-			cameraScroll.y = 0;
-
-			this.postInvalidate();
-			
-			return true;
-		} else {
-			accScroll.x = 0;
-			accScroll.y = 0;
-
-			lastTouchPosition.x = (int) event.getX();
-			lastTouchPosition.y = (int) event.getY();
+		default:
 
 		}
 
-		if (cameraPosition.x < -getWidth() + smaller )
+		lastTouchPosition.x = (int) event.getX();
+		lastTouchPosition.y = (int) event.getY();
+
+		if (gameSession.isFinished()) {
+			revealAll();
+			this.postDelayed(new FinishGameRunnable(), 5000);
+		}
+
+		if (cameraPosition.x < -getWidth() + smaller)
 			cameraPosition.x = -getWidth() + smaller;
 
-		if (cameraPosition.y < -getHeight() + smaller )
+		if (cameraPosition.y < -getHeight() + smaller)
 			cameraPosition.y = -getHeight() + smaller;
-		
-		if ( cameraPosition.x > ( this.getWidth() - smaller ) )
-			cameraPosition.x = getWidth() - smaller;
-		
-		if ( cameraPosition.y > ( this.getHeight() - smaller ) )
-			cameraPosition.y = getHeight() - smaller;
-		
-		postInvalidate();
 
+		if (cameraPosition.x > (this.getWidth() - smaller))
+			cameraPosition.x = getWidth() - smaller;
+
+		if (cameraPosition.y > (this.getHeight() - smaller))
+			cameraPosition.y = getHeight() - smaller;
+
+		this.invalidate();
 		return true;
+
 	}
 
 	public void setToFlag() {
 
-		playerAction = MinefieldOperations.FLAG;		
+		playerAction = MinefieldOperations.FLAG;
 	}
 
 	public void setToPoke() {
