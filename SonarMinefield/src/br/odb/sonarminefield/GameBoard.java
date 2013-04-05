@@ -28,14 +28,13 @@ public class GameBoard extends View implements OnTouchListener {
 
 	private Vector2 cameraPosition;
 	private Vector2 lastTouchPosition;
+	
 
 	int smaller;
 
 	GameSession gameSession;
 	Bitmap[] palette;
-	PlayGameActivity manager;
-	long touchMilis;
-	boolean holdingTouch;
+	PlayGameActivity manager;	
 
 	private MinefieldOperations playerAction = MinefieldOperations.POKE;
 

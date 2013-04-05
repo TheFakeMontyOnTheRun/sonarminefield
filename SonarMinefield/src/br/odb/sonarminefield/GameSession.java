@@ -76,8 +76,8 @@ public class GameSession {
 	}
 	 
 	private void placeNumbersOnBoard() {
-		for ( int x = 0; x < getWidth(); ++x ) {
-			for ( int y = 0; y < getHeight(); ++y ) {
+		for ( int x = 1; x < getWidth() - 1; ++x ) {
+			for ( int y = 1; y < getHeight() - 1; ++y ) {
 				if ( map[ x ][ y ] == POSITION_MINE ) {
 					
 					if ( map[ x - 1 ][ y - 1 ] != POSITION_MINE)
