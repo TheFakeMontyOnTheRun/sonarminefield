@@ -3,6 +3,13 @@
  */
 package br.odb.sonarminefield;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Random;
 
 /**
@@ -267,5 +274,36 @@ public class GameSession {
 			return false;
 		
 		return true;
+	}
+
+	public void saveState( OutputStream os ) throws IOException {		
+	
+		DataOutputStream dos = new DataOutputStream( os );
+		
+		for ( int c = 0; c < WIDTH; ++c ) {
+			
+			for ( int d = 0; d < HEIGHT; ++d ) {
+				dos.writeBoolean( covered[ c ][ d ] );
+				dos.writeBoolean( flagged[ c ][ d ] );
+				dos.writeInt( map[ c ][ d ] );
+			}
+		}
+		dos.writeInt( remainingTilesToClear );
+	}
+
+	public void loadState( InputStream is ) throws IOException {
+
+		DataInputStream dis = new DataInputStream( is );
+		
+		for ( int c = 0; c < WIDTH; ++c ) {
+			
+			for ( int d = 0; d < HEIGHT; ++d ) {
+				
+				covered[ c ][ d ] = dis.readBoolean();
+				flagged[ c ][ d ] = dis.readBoolean();
+				map[ c ][ d ] = dis.readInt();
+			}
+		}
+		remainingTilesToClear = dis.readInt();		
 	}
 }

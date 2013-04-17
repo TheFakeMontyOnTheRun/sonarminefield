@@ -44,8 +44,14 @@ public class ShowGameSplashActivity extends Activity implements OnClickListener,
         getMenuInflater().inflate(R.menu.activity_show_game_splash, menu);
         return true;
     }
-
+    
+    private void destroySavedState() {
+    	
+    	deleteFile( "state" );
+	}
+    
 	public void onClick(View arg0) {
+    	destroySavedState();
 		Intent intent = new Intent( this, PlayGameActivity.class );
 		int mines = skMines.getProgress();
 		Bundle bundle = new Bundle();

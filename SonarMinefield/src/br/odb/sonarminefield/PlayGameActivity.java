@@ -1,8 +1,14 @@
 package br.odb.sonarminefield;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +18,7 @@ public class PlayGameActivity extends Activity {
 	GameBoard gameBoard;
 	GameSession session;
 	static Context instanceContext;
+	int mines = 0;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,10 +26,33 @@ public class PlayGameActivity extends Activity {
         
         instanceContext = this;
         //setContentView(R.layout.activity_play_game);
-        int mines = 0;
         Intent intent = this.getIntent();
-        mines = intent.getExtras().getInt( "mines" ) + 2;      
-        
+        mines = intent.getExtras().getInt( "mines" ) + 2;
+        startNewGame();
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+    	saveState();
+    	super.onSaveInstanceState(outState);
+    }
+    
+    public void saveState() {
+        try {
+        	FileOutputStream fos = openFileOutput( "state", Context.MODE_PRIVATE );
+			session.saveState( fos );
+			fos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    	
+    }
+    
+    public void startNewGame() {
+    	
         session = new GameSession();
         session.placeRandomMines( mines );
         
@@ -30,7 +60,38 @@ public class PlayGameActivity extends Activity {
         //gameBoard = ( GameBoard )findViewById( R.id.gameBoard );
         setContentView( gameBoard );
         gameBoard.setSession( session );
+   }
+    
+    @Override
+    protected void onDestroy() {
+    	
+    	super.onDestroy();
     }
+    
+
+
+	@Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		startNewGame();
+    	tryReload();
+    	super.onRestoreInstanceState(savedInstanceState);
+    }
+    
+    public void tryReload() {
+    	try {
+    		FileInputStream fis = openFileInput( "state");
+			session.loadState( fis );
+			fis.close();
+		} catch (FileNotFoundException e) {
+			startNewGame();
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
