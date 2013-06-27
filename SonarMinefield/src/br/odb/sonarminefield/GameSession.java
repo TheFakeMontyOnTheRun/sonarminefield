@@ -5,8 +5,6 @@ package br.odb.sonarminefield;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -156,8 +154,8 @@ public class GameSession {
 		switch ( map[ x ][ y ] ) {
 			case POSITION_MINE:
 				
-				 map[ x ][ y ] = this.POSITION_MINE_POKED;
-				gameState = this.GAMESTATE_GAMEOVER;
+				 map[ x ][ y ] = GameSession.POSITION_MINE_POKED;
+				gameState = GameSession.GAMESTATE_GAMEOVER;
 				return;
 
 			case POSITION_BLANK:					
@@ -176,7 +174,7 @@ public class GameSession {
 		}
 		
 		if ( this.remainingTilesToClear == mines )
-			gameState = gameState = this.GAMESTATE_FININSHED;
+			gameState = GameSession.GAMESTATE_FININSHED;
 		
 
 	}
@@ -229,12 +227,12 @@ public class GameSession {
 
 	public boolean isFinished() {
 		
-		return gameState == this.GAMESTATE_GAMEOVER || isVictory();
+		return gameState == GameSession.GAMESTATE_GAMEOVER || isVictory();
 	}
 
 	public boolean isVictory() {
 		
-		return gameState == this.GAMESTATE_FININSHED;
+		return gameState == GameSession.GAMESTATE_FININSHED;
 	}
 
 	public void uncoverAt(int x, int y) {

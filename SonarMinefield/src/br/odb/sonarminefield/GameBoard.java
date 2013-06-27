@@ -86,7 +86,7 @@ public class GameBoard extends View implements OnTouchListener {
 		palette[7] = BitmapFactory.decodeResource(appContext.getResources(),
 				R.drawable.n7svg);
 		palette[8] = BitmapFactory.decodeResource(appContext.getResources(),
-				R.drawable.n7svg);
+				R.drawable.n8svg);
 		palette[9] = BitmapFactory.decodeResource(appContext.getResources(),
 				R.drawable.minesvg);
 		palette[10] = BitmapFactory.decodeResource(appContext.getResources(),
