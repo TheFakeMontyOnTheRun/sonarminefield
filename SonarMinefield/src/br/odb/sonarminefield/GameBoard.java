@@ -38,6 +38,10 @@ public class GameBoard extends View implements OnTouchListener {
 
 	private MinefieldOperations playerAction = MinefieldOperations.POKE;
 
+	private long pressTime;
+
+	private long releaseTime;
+
 	public GameBoard(Context appContext, AttributeSet attrs, int defStyle) {
 		super(appContext, attrs, defStyle);
 
@@ -174,12 +178,14 @@ public class GameBoard extends View implements OnTouchListener {
 		}
 
 	}
-
+	
 	public boolean onTouch(View v, MotionEvent event) {
 
 		Vector2 touch = new Vector2();
 		int downX;
 		int downY;
+		float diffX;
+		float diffY;
 		int newWidth = getWidth() / gameSession.getWidth();
 		int newHeight = getHeight() / gameSession.getHeight();
 		int smaller;
@@ -198,7 +204,25 @@ public class GameBoard extends View implements OnTouchListener {
 		switch (playerAction) {
 
 		case POKE:
-			gameSession.poke(downX, downY);
+			
+			if (event.getAction() == MotionEvent.ACTION_DOWN) {
+				pressTime = System.currentTimeMillis();
+			} 
+			
+			if (event.getAction() == MotionEvent.ACTION_UP) {
+				releaseTime = System.currentTimeMillis();
+
+				if ( ( releaseTime - pressTime ) > 1000 ) {
+					gameSession.flag(downX, downY);
+					invalidate();
+					return true;			
+				} else {
+					gameSession.poke(downX, downY);
+				}
+				
+				pressTime = -1;
+				releaseTime = -1;
+			}		
 			break;
 
 		case FLAG:
