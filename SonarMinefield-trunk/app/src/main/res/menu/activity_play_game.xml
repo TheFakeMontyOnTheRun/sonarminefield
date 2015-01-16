@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    	<item android:id="@+id/menu_settings_poke"
+        android:title="@string/playgame_activity_option_poke"
+        android:orderInCategory="100" />
+
+        <item android:id="@+id/menu_settings_move"
+        android:title="@string/playgame_activity_option_move"
+        android:orderInCategory="100" />
+    		
+    	
+        <item android:id="@+id/menu_settings_flag"
+        android:title="@string/playgame_activity_option_flag"
+        android:orderInCategory="100" />
+        
+        
+        <group>
+            
+		    <item android:id="@+id/menu_settings_quit_to_menu"
+		        android:title="@string/playgame_activity_option_quit"
+		        android:orderInCategory="100" />
+      	</group>    
+</menu>

@@ -1,0 +1,2 @@
+/Users/monty/gitcenter/sonarminefield/SonarMinefield-trunk/app/build/intermediates/classes/debug
+/Users/monty/gitcenter/sonarminefield/SonarMinefield-trunk/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-8a26afaf819461ca659fac199e597ee980ee770b.jar

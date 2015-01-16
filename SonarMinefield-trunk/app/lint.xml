@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <issue id="SelectableText">
+        <ignore path="res/layout/activity_show_game_splash.xml" />
+    </issue>
+</lint>
