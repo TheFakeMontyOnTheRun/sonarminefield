@@ -69,10 +69,10 @@ public class GameSession {
 			x = random.nextInt( WIDTH - 2 ) + 1;
 			y = random.nextInt( HEIGHT - 2 ) + 1;
 			
-			if ( map[ x ][ y ] != POSITION_MINE ) {
+			if ( map[ y ][ x ] != POSITION_MINE ) {
 
 				--n;			
-				map[ x ][ y ] = POSITION_MINE;				
+				map[ y ][ x ] = POSITION_MINE;				
 			}
 		}
 		
@@ -83,7 +83,7 @@ public class GameSession {
 	private void placeNumbersOnBoard() {
 		for ( int x = 1; x < getWidth() - 1; ++x ) {
 			for ( int y = 1; y < getHeight() - 1; ++y ) {
-				if ( map[ x ][ y ] == POSITION_MINE ) {
+				if ( map[ y ][ x ] == POSITION_MINE ) {
 					
 					if ( map[ x - 1 ][ y - 1 ] != POSITION_MINE)
 						++map[ x - 1 ][ y - 1 ];
@@ -118,7 +118,7 @@ public class GameSession {
 		if ( x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT )
 			return true;
 
-		return covered[ x ][ y ];
+		return covered[ y ][ x ];
 	}
 	
 	public int getWidth() {
@@ -136,7 +136,7 @@ public class GameSession {
 		if ( x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT )
 			return POSITION_BLANK;
 
-		return map[ x ][ y ];
+		return map[ y ][ x ];
 	}
 
 	public void poke(int x, int y) {
@@ -146,31 +146,31 @@ public class GameSession {
 		
 		if ( flagged[ x][ y ] )	{
 			
-			flagged[ x ][ y ] = false;
+			flagged[ y ][ x ] = false;
 			return;
 		}
 		
 		
-		switch ( map[ x ][ y ] ) {
+		switch ( map[ y ][ x ] ) {
 			case POSITION_MINE:
 				
-				 map[ x ][ y ] = GameSession.POSITION_MINE_POKED;
+				 map[ y ][ x ] = GameSession.POSITION_MINE_POKED;
 				gameState = GameSession.GAMESTATE_GAMEOVER;
 				return;
 
 			case POSITION_BLANK:					
 					floodUncover( x, y );
 					
-					if ( covered[ x ][ y ] && !flagged[ x ][ y ] )
+					if ( covered[ y ][ x ] && !flagged[ y ][ x ] )
 						this.remainingTilesToClear--;
 					
-					covered[ x ][ y ] = false;					
+					covered[ y ][ x ] = false;					
 			default:
 					
-					if ( covered[ x ][ y ]  )
+					if ( covered[ y ][ x ]  )
 						this.remainingTilesToClear--;
 					
-					covered[ x ][ y ] = false;
+					covered[ y ][ x ] = false;
 		}
 		
 		if ( this.remainingTilesToClear == mines )
@@ -181,14 +181,14 @@ public class GameSession {
 
 
 	private void floodUncover(int x, int y) {
-		if ( covered[ x ][ y ] && !flagged[ x ][ y ] ) {
+		if ( covered[ y ][ x ] && !flagged[ y ][ x ] ) {
 			
-			if ( map[ x ][ y ] == POSITION_BLANK ) {
+			if ( map[ y ][ x ] == POSITION_BLANK ) {
 				
-				if ( covered[ x ][ y ] )
+				if ( covered[ y ][ x ] )
 					this.remainingTilesToClear--;
 				
-				covered[ x ][ y ] = false;
+				covered[ y ][ x ] = false;
 				
 				if ( x > 0)
 					floodUncover( x - 1, y );
@@ -215,12 +215,12 @@ public class GameSession {
 					floodUncover( x - 1, y + 1);				
 				
 				
-			} if ( map[ x ][ y ] != POSITION_MINE ) {
+			} if ( map[ y ][ x ] != POSITION_MINE ) {
 				
-				if ( covered[ x ][ y ] )
+				if ( covered[ y ][ x ] )
 					this.remainingTilesToClear--;
 				
-				covered[ x ][ y ] = false;
+				covered[ y ][ x ] = false;
 			}
 		}		
 	}
@@ -238,21 +238,21 @@ public class GameSession {
 	public void uncoverAt(int x, int y) {
 		
 		if ( isValid( x, y ) ) {
-			covered[ x ][ y ] = false;
-			flagged[ x ][ y ] = false;
+			covered[ y ][ x ] = false;
+			flagged[ y ][ x ] = false;
 		}
 	}
 
 	public void flag(int x, int y) {
 		
 		if ( isValid( x, y ) )		
-			flagged[ x ][ y ] = !flagged[ x ][ y ];		
+			flagged[ y ][ x ] = !flagged[ y ][ x ];		
 	}
 
 	public boolean isFlaggedAt(int x, int y) {
 
 		if ( isValid( x, y ) )
-			return flagged[ x ][ y ];
+			return flagged[ y ][ x ];
 		else
 			return false;
 	}
