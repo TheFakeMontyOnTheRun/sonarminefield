@@ -1,6 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_settings_outcome"
-        android:title="@string/outcome_activity_option_back"
-        android:orderInCategory="100" />
-</menu>
-<!-- From: file:/Users/monty/gitcenter/sonarminefield/SonarMinefield-trunk/app/src/main/res/menu/activity_show_game_outcome.xml -->

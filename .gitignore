@@ -1,2 +1,5 @@
 
 *.class
+SonarMinefield-trunk/.gradle
+SonarMinefield-trunk/.idea
+SonarMinefield-trunk/app/build
