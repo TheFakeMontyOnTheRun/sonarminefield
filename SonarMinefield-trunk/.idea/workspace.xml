@@ -37,167 +37,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5185e64b-72ef-4854-a869-fb5fa63942ae" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_18_0_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SonarMinefield-trunk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SonarMinefield-trunk.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/release/classes.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/aidl/debug/dependency.store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/aidl/release/dependency.store" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/debug/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/release/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/release/merger.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/release/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-8a26afaf819461ca659fac199e597ee980ee770b.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/release/support-v4-18.0.0-8a26afaf819461ca659fac199e597ee980ee770b.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable-hdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable-mdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable-xhdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable-xxhdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/blanksvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/coveredsvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/flagged.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/minespokedvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/minesvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n1svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n2svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n3svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n4svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n5svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n6svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n7svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/drawable/n8svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_game_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_show_game_outcome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_show_game_splash.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/activity_play_game.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/activity_show_game_outcome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/activity_show_game_splash.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable-hdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable-mdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable-xhdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable-xxhdpi-v4/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/blanksvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/coveredsvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/flagged.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/minespokedvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/minesvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n1svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n2svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n3svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n4svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n5svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n6svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n7svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/drawable/n8svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/layout/activity_game_layout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/layout/activity_show_game_outcome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/layout/activity_show_game_splash.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/menu/activity_play_game.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/menu/activity_show_game_outcome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/menu/activity_show_game_splash.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/release/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-debug.ap_" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/resources-release.ap_" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/tmp/dex/debug/inputList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/tmp/dex/release/inputList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-release-unaligned.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/manifest-merger-debug-report.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/lint-results-release-fatal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/lint-results-release-fatal.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/lint-results-release-fatal_files/hololike.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/odb/droidlib/Vector2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/odb/droidlib/Vector2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/.classpath" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/.project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/classes/br/odb/droidlib/Vector2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/jarlist.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/blanksvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/coveredsvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/flagged.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/minespokedvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/minesvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n1svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n2svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n3svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n4svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n5svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n6svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n7svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/bin/res/drawable/n8svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/gen/br/odb/sonarminefield/BuildConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/gen/br/odb/sonarminefield/R.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/ic_launcher-web.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/libs/android-support-v4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/lint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/proguard-project.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/blanksvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/coveredsvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/flagged.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/minespokedvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/minesvg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n1svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n2svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n3svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n4svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n5svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n6svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n7svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/drawable/n8svg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/layout/activity_show_game_outcome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/layout/activity_show_game_splash.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/menu/activity_play_game.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/menu/activity_show_game_outcome.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/menu/activity_show_game_splash.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/droidlib/Vector2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/sonarminefield/GameBoard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/sonarminefield/GameSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/sonarminefield/MinefieldOperations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/sonarminefield/PlayGameActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/sonarminefield/ShowGameOutcomeActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/src/br/odb/sonarminefield/ShowGameSplashActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/4th copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/5th copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/6th copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/7th copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/8th copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/9th copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/another copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/copy of n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/drawing.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/n1.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SonarMinefield/svg/third copy of n1.svg" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameOutcomeActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameSplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameOutcomeActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameSplashActivity.java" beforeDir="false" />
     </list>
     <ignored path="SonarMinefield.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -266,75 +111,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_game_layout.xml">
-          <provider editor-type-id="text-editor" />
-          <provider selected="true" editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" column="69" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+              <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local.properties">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameOutcomeActivity.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameSplashActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/droidlib/Vector2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
-              <folding>
-                <element signature="e#1208#1209#0" expanded="true" />
-                <element signature="e#1268#1269#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/GameSession.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="820">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="150">
+              <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -373,6 +189,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/GameSession.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameOutcomeActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameSplashActivity.kt" />
       </list>
     </option>
   </component>
@@ -711,6 +529,46 @@
       <window_info anchor="right" id="Device File Explorer" order="8" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24892704" />
+      <window_info id="Structure" order="1" weight="0.24964234" />
+      <window_info id="Build Variants" order="2" side_tool="true" />
+      <window_info id="Palette&#9;" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Captures" order="7" side_tool="true" />
+      <window_info id="Resources Explorer" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32939634" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.3283767" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49928468" weight="0.39895013" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Android" order="9" visible="true" weight="0.32943678" />
+      <window_info anchor="bottom" id="Changes" order="10" />
+      <window_info anchor="bottom" id="Memory Monitor" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5028612" side_tool="true" visible="true" weight="0.3283767" />
+      <window_info anchor="bottom" id="Gradle Console" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.32943678" />
+      <window_info anchor="bottom" id="Android Profiler" order="16" />
+      <window_info active="true" anchor="bottom" id="Build" order="17" sideWeight="0.49713877" visible="true" weight="0.3283767" />
+      <window_info anchor="bottom" id="Logcat" order="18" sideWeight="0.4985694" weight="0.3110285" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Gradle" order="4" weight="0.3297568" />
+      <window_info anchor="right" id="Designer" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Device File Explorer" order="8" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -724,7 +582,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.java</url>
+          <url>file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.kt</url>
           <line>60</line>
           <properties />
           <option name="timeStamp" value="1" />
@@ -776,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -801,14 +652,35 @@
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="75">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/PlayGameActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameOutcomeActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/odb/sonarminefield/ShowGameSplashActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
         </state>
       </provider>
     </entry>
