@@ -1,82 +1,13 @@
 package br.odb.sonarminefield
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import java.io.FileNotFoundException
-import java.io.IOException
+import androidx.appcompat.app.AppCompatActivity
 
-class PlayGameActivity : Activity() {
-
-    private var gameBoard: GameBoard? = null
-    private var session: GameSession? = null
-    private var mines = 0
+class PlayGameActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val intent = this.intent
-        mines = intent.extras!!.getInt("mines") + 2
-        startNewGame()
-    }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        saveState()
-        super.onSaveInstanceState(outState)
-    }
-
-    private fun saveState() {
-        try {
-            val fos = openFileOutput("state", Context.MODE_PRIVATE)
-            session!!.saveState(fos)
-            fos.close()
-        } catch (e: IOException) { // TODO Auto-generated catch block
-            e.printStackTrace()
-        }
-    }
-
-    private fun startNewGame() {
-        session = GameSession()
-        session!!.placeRandomMines(mines)
-        session!!.clearBorders()
-        gameBoard = GameBoard(this)
-        setContentView(gameBoard)
-        gameBoard!!.setSession(session)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        startNewGame()
-        tryReload()
-        super.onRestoreInstanceState(savedInstanceState)
-    }
-
-    private fun tryReload() {
-        try {
-            val fis = openFileInput("state")
-            session!!.loadState(fis)
-            fis.close()
-        } catch (e: FileNotFoundException) {
-            startNewGame()
-            e.printStackTrace()
-        } catch (e: IOException) { // TODO Auto-generated catch block
-            e.printStackTrace()
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.activity_play_game, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_settings_flag -> gameBoard!!.setToFlag()
-            R.id.menu_settings_poke -> gameBoard!!.setToPoke()
-            R.id.menu_settings_move -> gameBoard!!.setToMove()
-            R.id.menu_settings_quit_to_menu -> finish()
-            else -> return false
-        }
-        return true
+        setContentView(R.layout.activity_game_layout)
     }
 }

@@ -110,6 +110,10 @@ class GameBoard : View, OnTouchListener {
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
 
+        if (gameSession == null) {
+            return;
+        }
+
         val rectSrc = Rect()
         val rectDst = Rect()
         val newWidth: Int = width / gameSession!!.width
