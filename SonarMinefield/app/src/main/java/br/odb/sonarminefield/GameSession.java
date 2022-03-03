@@ -144,7 +144,7 @@ public class GameSession {
         if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
             return;
 
-        if (flagged[x][y]) {
+        if (flagged[y][x]) {
 
             flagged[y][x] = false;
             return;
