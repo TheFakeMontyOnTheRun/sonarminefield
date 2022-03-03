@@ -161,7 +161,6 @@ public class GameBoard extends View implements OnTouchListener {
                 }
             }
         }
-
     }
 
     public boolean onTouch(View v, MotionEvent event) {
@@ -169,8 +168,6 @@ public class GameBoard extends View implements OnTouchListener {
         Vector2 touch = new Vector2();
         int downX;
         int downY;
-        float diffX;
-        float diffY;
         int newWidth = getWidth() / gameSession.getWidth();
         int newHeight = getHeight() / gameSession.getHeight();
         int smaller;

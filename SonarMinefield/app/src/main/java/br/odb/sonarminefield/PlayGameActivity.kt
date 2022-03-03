@@ -41,6 +41,7 @@ class PlayGameActivity : Activity() {
     fun startNewGame() {
         session = GameSession()
         session!!.placeRandomMines(mines)
+        session!!.clearBorders()
         gameBoard = GameBoard(this)
         //gameBoard = ( GameBoard )findViewById( R.id.gameBoard );
         setContentView(gameBoard)

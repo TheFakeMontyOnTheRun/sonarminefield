@@ -302,4 +302,16 @@ public class GameSession {
         }
         remainingTilesToClear = dis.readInt();
     }
+
+    public void clearBorders() {
+        for (int c = 0; c < HEIGHT; ++c) {
+            poke(0        , c);
+            poke(WIDTH - 1, c);
+        }
+
+        for (int d = 0; d < WIDTH; ++d) {
+            poke(d,          0);
+            poke(d, HEIGHT - 1);
+        }
+    }
 }
