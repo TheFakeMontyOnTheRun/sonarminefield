@@ -14,8 +14,6 @@ class PlayGameActivity : Activity() {
     var mines = 0
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        currentContext = this
-        //setContentView(R.layout.activity_play_game);
         val intent = this.intent
         mines = intent.extras!!.getInt("mines") + 2
         startNewGame()
@@ -46,10 +44,6 @@ class PlayGameActivity : Activity() {
         //gameBoard = ( GameBoard )findViewById( R.id.gameBoard );
         setContentView(gameBoard)
         gameBoard!!.setSession(session)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -85,9 +79,5 @@ class PlayGameActivity : Activity() {
             else -> return false
         }
         return true
-    }
-
-    companion object {
-        var currentContext: Context? = null
     }
 }
