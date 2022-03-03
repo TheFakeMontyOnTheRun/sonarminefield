@@ -19,8 +19,8 @@ class GameBoard : View, OnTouchListener {
     var gameSession: GameSession? = null
     lateinit var palette: Array<Bitmap?>
     var manager: PlayGameActivity? = null
-    private var cameraPosition: Vector2? = null
-    private var lastTouchPosition: Vector2? = null
+    private var cameraPosition: Position2D? = null
+    private var lastTouchPosition: Position2D? = null
     private var playerAction = MinefieldOperations.POKE
     private var pressTime: Long = 0
     private var releaseTime: Long = 0
@@ -97,8 +97,8 @@ class GameBoard : View, OnTouchListener {
             appContext.getResources(),
             R.drawable.flagged
         )
-        cameraPosition = Vector2()
-        lastTouchPosition = Vector2()
+        cameraPosition = Position2D()
+        lastTouchPosition = Position2D()
         setToPoke()
         setOnTouchListener(this)
     }
@@ -162,14 +162,14 @@ class GameBoard : View, OnTouchListener {
     }
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
-        val touch = Vector2()
+        val touch = Position2D()
         val downX: Int
         val downY: Int
         val newWidth: Int = width / gameSession!!.width
         val newHeight: Int = height / gameSession!!.height
         val smaller: Int
-        touch.x = cameraPosition!!.x + event.x
-        touch.y = cameraPosition!!.y + event.y
+        touch.x = (cameraPosition!!.x + event.x).toInt()
+        touch.y = (cameraPosition!!.y + event.y).toInt()
         smaller = if (newWidth <= newHeight) newHeight else newWidth
         downX = (touch.x / smaller).toInt()
         downY = (touch.y / smaller).toInt()
@@ -195,24 +195,24 @@ class GameBoard : View, OnTouchListener {
                 gameSession!!.flag(downX, downY)
             }
             MinefieldOperations.MOVE -> if (event.action == MotionEvent.ACTION_MOVE) {
-                cameraPosition!!.x += lastTouchPosition!!.x - event.x
-                cameraPosition!!.y += lastTouchPosition!!.y - event.y
+                cameraPosition!!.x += lastTouchPosition!!.x - event.x.toInt()
+                cameraPosition!!.y += lastTouchPosition!!.y - event.y.toInt()
             }
             else -> {}
         }
-        lastTouchPosition!!.x = event.x
-        lastTouchPosition!!.y = event.y
+        lastTouchPosition!!.x = event.x.toInt()
+        lastTouchPosition!!.y = event.y.toInt()
         if (gameSession!!.isFinished) {
             revealAll()
             postDelayed(FinishGameRunnable(), 5000)
         }
-        if (cameraPosition!!.x < -width + smaller) cameraPosition!!.x = (-width + smaller).toFloat()
+        if (cameraPosition!!.x < -width + smaller) cameraPosition!!.x = (-width + smaller)
         if (cameraPosition!!.y < -height + smaller) cameraPosition!!.y =
-            (-height + smaller).toFloat()
+            (-height + smaller)
         if (cameraPosition!!.x > this.width - smaller) cameraPosition!!.x =
-            (width - smaller).toFloat()
+            (width - smaller)
         if (cameraPosition!!.y > this.height - smaller) cameraPosition!!.y =
-            (height - smaller).toFloat()
+            (height - smaller)
         this.invalidate()
         return true
     }
