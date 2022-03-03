@@ -3,3 +3,6 @@
 SonarMinefield-trunk/.gradle
 SonarMinefield-trunk/.idea
 SonarMinefield-trunk/app/build
+SonarMinefield/.idea
+local.properties
+SonarMinefield/.gradle
