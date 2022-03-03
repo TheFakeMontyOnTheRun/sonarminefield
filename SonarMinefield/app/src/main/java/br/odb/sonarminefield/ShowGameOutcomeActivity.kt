@@ -13,8 +13,7 @@ class ShowGameOutcomeActivity : Activity(), View.OnClickListener {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_game_outcome)
-        val tvOutcome: TextView
-        tvOutcome = findViewById(R.id.tvOutcome)
+        val tvOutcome: TextView = findViewById(R.id.tvOutcome)
         tvOutcome.text =
             if (intent.extras!!.getString("result") == "victory") "Congratulations, you cleared the field! Try a harder level!" else "You activated a mine. Please try again!"
         btnBack.setOnClickListener(this)

@@ -1,6 +1,3 @@
-/**
- *
- */
 package br.odb.sonarminefield
 
 import java.io.DataInputStream
@@ -24,14 +21,13 @@ class GameSession {
     val height = 15
 
     companion object {
-
         const val POSITION_MINE = 9
         const val POSITION_COVERED = 10
         const val POSITION_MINE_POKED = 11
         const val POSITION_FLAGGED = 12
         const val POSITION_BLANK = 0
-        const val GAMESTATE_FININSHED = 2
-        const val GAMESTATE_GAMEOVER = 3
+        const val GAME_STATE_FINISHED = 2
+        const val GAME_STATE_GAME_OVER = 3
     }
 
     fun placeRandomMines(n: Int) {
@@ -85,7 +81,7 @@ class GameSession {
         when (map[y]!![x]) {
             POSITION_MINE -> {
                 map[y]!![x] = POSITION_MINE_POKED
-                gameState = GAMESTATE_GAMEOVER
+                gameState = GAME_STATE_GAME_OVER
                 return
             }
             POSITION_BLANK -> {
@@ -100,7 +96,7 @@ class GameSession {
                 covered[y]!![x] = false
             }
         }
-        if (remainingTilesToClear == mines) gameState = GAMESTATE_FININSHED
+        if (remainingTilesToClear == mines) gameState = GAME_STATE_FINISHED
     }
 
     private fun floodUncover(x: Int, y: Int) {
@@ -125,9 +121,9 @@ class GameSession {
     }
 
     val isFinished: Boolean
-        get() = gameState == GAMESTATE_GAMEOVER || isVictory
+        get() = gameState == GAME_STATE_GAME_OVER || isVictory
     val isVictory: Boolean
-        get() = gameState == GAMESTATE_FININSHED
+        get() = gameState == GAME_STATE_FINISHED
 
     fun uncoverAt(x: Int, y: Int) {
         if (isValid(x, y)) {
@@ -150,8 +146,8 @@ class GameSession {
         return if (x >= width) false else y < height
     }
 
-    fun saveState(os: OutputStream?) {
-        val dos = DataOutputStream(os)
+    fun saveState(outputStream: OutputStream?) {
+        val dos = DataOutputStream(outputStream)
         for (c in 0 until height) {
             for (d in 0 until width) {
                 dos.writeBoolean(covered[c]!![d])
@@ -162,8 +158,8 @@ class GameSession {
         dos.writeInt(remainingTilesToClear)
     }
 
-    fun loadState(`is`: InputStream?) {
-        val dis = DataInputStream(`is`)
+    fun loadState(inputStream: InputStream?) {
+        val dis = DataInputStream(inputStream)
         for (c in 0 until height) {
             for (d in 0 until width) {
                 covered[c]!![d] = dis.readBoolean()

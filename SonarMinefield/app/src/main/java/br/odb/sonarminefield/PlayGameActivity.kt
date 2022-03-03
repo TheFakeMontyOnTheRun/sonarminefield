@@ -9,9 +9,11 @@ import java.io.FileNotFoundException
 import java.io.IOException
 
 class PlayGameActivity : Activity() {
-    var gameBoard: GameBoard? = null
-    var session: GameSession? = null
-    var mines = 0
+
+    private var gameBoard: GameBoard? = null
+    private var session: GameSession? = null
+    private var mines = 0
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = this.intent
@@ -24,24 +26,21 @@ class PlayGameActivity : Activity() {
         super.onSaveInstanceState(outState)
     }
 
-    fun saveState() {
+    private fun saveState() {
         try {
             val fos = openFileOutput("state", Context.MODE_PRIVATE)
             session!!.saveState(fos)
             fos.close()
-        } catch (e: FileNotFoundException) { // TODO Auto-generated catch block
-            e.printStackTrace()
         } catch (e: IOException) { // TODO Auto-generated catch block
             e.printStackTrace()
         }
     }
 
-    fun startNewGame() {
+    private fun startNewGame() {
         session = GameSession()
         session!!.placeRandomMines(mines)
         session!!.clearBorders()
         gameBoard = GameBoard(this)
-        //gameBoard = ( GameBoard )findViewById( R.id.gameBoard );
         setContentView(gameBoard)
         gameBoard!!.setSession(session)
     }
@@ -52,7 +51,7 @@ class PlayGameActivity : Activity() {
         super.onRestoreInstanceState(savedInstanceState)
     }
 
-    fun tryReload() {
+    private fun tryReload() {
         try {
             val fis = openFileInput("state")
             session!!.loadState(fis)

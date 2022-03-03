@@ -15,9 +15,9 @@ import android.view.View.OnTouchListener
  * @author monty
  */
 class GameBoard : View, OnTouchListener {
-    var smaller = 0
+    private var smaller = 0
     var gameSession: GameSession? = null
-    lateinit var palette: Array<Bitmap?>
+    private lateinit var palette: Array<Bitmap?>
     var manager: PlayGameActivity? = null
     private var cameraPosition: Position2D? = null
     private var lastTouchPosition: Position2D? = null
@@ -107,11 +107,6 @@ class GameBoard : View, OnTouchListener {
         gameSession = session
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see android.graphics.drawable.Drawable#draw(android.graphics.Canvas)
-     */
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
 
@@ -134,10 +129,10 @@ class GameBoard : View, OnTouchListener {
                     ) palette[GameSession.POSITION_FLAGGED] else palette[GameSession.POSITION_COVERED] else {
                         palette[pos]
                     }
-                    rectDst.top = (-cameraPosition!!.y + y * smaller).toInt()
-                    rectDst.left = (-cameraPosition!!.x + x * smaller).toInt()
-                    rectDst.bottom = (-cameraPosition!!.y + (y + 1) * smaller).toInt()
-                    rectDst.right = (-cameraPosition!!.x + (x + 1) * smaller).toInt()
+                    rectDst.top = (-cameraPosition!!.y + y * smaller)
+                    rectDst.left = (-cameraPosition!!.x + x * smaller)
+                    rectDst.bottom = (-cameraPosition!!.y + (y + 1) * smaller)
+                    rectDst.right = (-cameraPosition!!.x + (x + 1) * smaller)
                     rectSrc.top = 0
                     rectSrc.left = 0
                     rectSrc.right = bitmap!!.width
@@ -151,7 +146,7 @@ class GameBoard : View, OnTouchListener {
         }
     }
 
-    fun revealAll() {
+    private fun revealAll() {
         if (gameSession != null) {
             for (x in 0 until gameSession!!.width) {
                 for (y in 0 until gameSession!!.height) {
@@ -167,12 +162,11 @@ class GameBoard : View, OnTouchListener {
         val downY: Int
         val newWidth: Int = width / gameSession!!.width
         val newHeight: Int = height / gameSession!!.height
-        val smaller: Int
         touch.x = (cameraPosition!!.x + event.x).toInt()
         touch.y = (cameraPosition!!.y + event.y).toInt()
-        smaller = if (newWidth <= newHeight) newHeight else newWidth
-        downX = (touch.x / smaller).toInt()
-        downY = (touch.y / smaller).toInt()
+        val smaller: Int = if (newWidth <= newHeight) newHeight else newWidth
+        downX = (touch.x / smaller)
+        downY = (touch.y / smaller)
         when (playerAction) {
             MinefieldOperations.POKE -> {
                 if (event.action == MotionEvent.ACTION_DOWN) {
@@ -198,8 +192,8 @@ class GameBoard : View, OnTouchListener {
                 cameraPosition!!.x += lastTouchPosition!!.x - event.x.toInt()
                 cameraPosition!!.y += lastTouchPosition!!.y - event.y.toInt()
             }
-            else -> {}
         }
+
         lastTouchPosition!!.x = event.x.toInt()
         lastTouchPosition!!.y = event.y.toInt()
         if (gameSession!!.isFinished) {

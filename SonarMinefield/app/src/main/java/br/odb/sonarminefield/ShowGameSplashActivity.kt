@@ -17,6 +17,8 @@ import java.io.IOException
 
 class ShowGameSplashActivity : Activity(), View.OnClickListener, OnSeekBarChangeListener {
 
+    private val filename = "data.dat"
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_game_splash)
@@ -61,8 +63,6 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, OnSeekBarChange
                 this.startActivity(intent)
             }
         }
-        if (resultCode == RESULT_CANCELED) { //Write your code on no result return
-        }
     }
 
     override fun onProgressChanged(arg0: SeekBar, arg1: Int, arg2: Boolean) {
@@ -86,11 +86,10 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, OnSeekBarChange
     }
 
     private fun saveData() {
-        val FILENAME = "data.dat"
         val mines: Int
         val fos: FileOutputStream
         try {
-            fos = openFileOutput(FILENAME, Context.MODE_PRIVATE)
+            fos = openFileOutput(filename, Context.MODE_PRIVATE)
             mines = skMines!!.progress
             fos.write(mines)
             fos.close()
@@ -102,11 +101,10 @@ class ShowGameSplashActivity : Activity(), View.OnClickListener, OnSeekBarChange
     }
 
     private fun restoreData() {
-        val FILENAME = "data.dat"
         val fis: FileInputStream
         val mines: Int
         try {
-            fis = openFileInput(FILENAME)
+            fis = openFileInput(filename)
             mines = fis.read()
             skMines!!.progress = mines
             fis.close()
