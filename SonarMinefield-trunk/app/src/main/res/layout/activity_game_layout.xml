@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="#090">
+    android:background="#090"
+    android:orientation="horizontal"
+    android:weightSum="1">
 
     <view
+        android:id="@+id/gmField"
+        class="br.odb.sonarminefield.GameBoard"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        class="br.odb.sonarminefield.GameBoard"
-        android:id="@+id/gmField"
         android:layout_weight="0.95"
         android:background="#000" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="#090">
+        android:background="#090"
+        android:orientation="vertical">
 
         <RadioGroup
+            android:id="@+id/rdoActions"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/rdoActions"
             android:clickable="true">
 
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reveal"
                 android:id="@+id/rdoReveal"
-                android:enabled="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:checked="true"
-                android:clickable="true" />
+                android:clickable="true"
+                android:enabled="true"
+                android:text="Reveal" />
 
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Flag"
                 android:id="@+id/rdoFlag"
-                android:enabled="true"
-                android:clickable="true" />
-
-            <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Browse"
-                android:id="@+id/rdoBrowse"
+                android:clickable="true"
                 android:enabled="true"
-                android:clickable="true" />
+                android:text="Flag" />
+
+            <RadioButton
+                android:id="@+id/rdoBrowse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:enabled="true"
+                android:text="Browse" />
         </RadioGroup>
     </LinearLayout>
 </LinearLayout>

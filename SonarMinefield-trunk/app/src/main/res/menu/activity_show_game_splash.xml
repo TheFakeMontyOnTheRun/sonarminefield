@@ -1,7 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_settings_splash"
-        android:title="@string/title_activity_option_reset"
-        android:orderInCategory="100" />
-    
-    
+    <item
+        android:id="@+id/menu_settings_splash"
+        android:orderInCategory="100"
+        android:title="@string/title_activity_option_reset" />
+
+
 </menu>

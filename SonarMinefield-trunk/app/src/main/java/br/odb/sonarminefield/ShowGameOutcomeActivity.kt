@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_show_game_outcome.*
 
@@ -16,7 +15,8 @@ class ShowGameOutcomeActivity : Activity(), View.OnClickListener {
         setContentView(R.layout.activity_show_game_outcome)
         val tvOutcome: TextView
         tvOutcome = findViewById(R.id.tvOutcome)
-        tvOutcome.text = if (intent.extras!!.getString("result") == "victory") "Congratulations, you cleared the field! Try a harder level!" else "You activated a mine. Please try again!"
+        tvOutcome.text =
+            if (intent.extras!!.getString("result") == "victory") "Congratulations, you cleared the field! Try a harder level!" else "You activated a mine. Please try again!"
         btnBack.setOnClickListener(this)
     }
 
