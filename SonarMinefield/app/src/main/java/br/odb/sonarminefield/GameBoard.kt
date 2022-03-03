@@ -10,7 +10,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
-import br.odb.droidlib.Vector2
 
 /**
  * @author monty

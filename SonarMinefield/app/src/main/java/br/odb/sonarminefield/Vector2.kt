@@ -1,6 +1,4 @@
-package br.odb.droidlib
-
-import br.odb.droidlib.Vector2
+package br.odb.sonarminefield
 
 class Vector2 {
     @JvmField
