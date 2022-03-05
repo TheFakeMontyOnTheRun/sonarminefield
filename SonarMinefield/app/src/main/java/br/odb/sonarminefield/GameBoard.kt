@@ -1,6 +1,3 @@
-/**
- *
- */
 package br.odb.sonarminefield
 
 import android.app.Activity
@@ -10,11 +7,10 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.widget.RadioGroup
 
-/**
- * @author monty
- */
-class GameBoard : View, OnTouchListener {
+class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
+    private var revealed: Boolean = false
     private var smaller = 0
     var gameSession: GameSession? = null
     private lateinit var palette: Array<Bitmap?>
@@ -42,7 +38,6 @@ class GameBoard : View, OnTouchListener {
     }
 
     private fun init(appContext: Context) {
-        count = 0
         manager = appContext as PlayGameActivity
         palette = arrayOfNulls(13)
         palette[0] = BitmapFactory.decodeResource(
@@ -99,7 +94,7 @@ class GameBoard : View, OnTouchListener {
         )
         cameraPosition = Position2D()
         lastTouchPosition = Position2D()
-        setToPoke()
+        playerAction = MinefieldOperations.POKE
         setOnTouchListener(this)
     }
 
@@ -152,6 +147,7 @@ class GameBoard : View, OnTouchListener {
 
     private fun revealAll() {
         if (gameSession != null) {
+            revealed = true
             for (x in 0 until gameSession!!.width) {
                 for (y in 0 until gameSession!!.height) {
                     gameSession!!.uncoverAt(x, y)
@@ -171,8 +167,12 @@ class GameBoard : View, OnTouchListener {
         val smaller: Int = if (newWidth <= newHeight) newHeight else newWidth
         downX = (touch.x / smaller)
         downY = (touch.y / smaller)
+
+        val diffX = lastTouchPosition!!.x - event.x.toInt()
+        val diffY = lastTouchPosition!!.y - event.y.toInt()
+
         when (playerAction) {
-            MinefieldOperations.POKE -> {
+            MinefieldOperations.POKE -> if (!revealed) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
                     pressTime = System.currentTimeMillis()
                 }
@@ -193,8 +193,8 @@ class GameBoard : View, OnTouchListener {
                 gameSession!!.flag(downX, downY)
             }
             MinefieldOperations.MOVE -> if (event.action == MotionEvent.ACTION_MOVE) {
-                cameraPosition!!.x += lastTouchPosition!!.x - event.x.toInt()
-                cameraPosition!!.y += lastTouchPosition!!.y - event.y.toInt()
+                cameraPosition!!.x += diffX
+                cameraPosition!!.y += diffY
             }
         }
 
@@ -215,18 +215,6 @@ class GameBoard : View, OnTouchListener {
         return true
     }
 
-    fun setToFlag() {
-        playerAction = MinefieldOperations.FLAG
-    }
-
-    fun setToPoke() {
-        playerAction = MinefieldOperations.POKE
-    }
-
-    fun setToMove() {
-        playerAction = MinefieldOperations.MOVE
-    }
-
     private inner class FinishGameRunnable : Runnable {
         override fun run() {
             val intent = manager!!.intent
@@ -236,7 +224,14 @@ class GameBoard : View, OnTouchListener {
         }
     }
 
-    companion object {
-        var count = 0
+    override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
+        when (checkedId) {
+            R.id.rdoBrowse ->
+                playerAction = MinefieldOperations.MOVE
+            R.id.rdoFlag ->
+                playerAction = MinefieldOperations.FLAG
+            R.id.rdoReveal ->
+                playerAction = MinefieldOperations.POKE
+        }
     }
 }

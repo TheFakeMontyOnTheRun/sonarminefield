@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioGroup
 
 private const val ARG_NUM_MINES = "mines"
 
@@ -35,6 +36,8 @@ class BoardFragment : Fragment() {
         gameBoard = root.findViewById(R.id.gmField)
         gameBoard!!.setSession(session)
         gameBoard!!.postInvalidate()
+
+        root.findViewById<RadioGroup>(R.id.rdoActions).setOnCheckedChangeListener(gameBoard)
 
         return root;
     }
