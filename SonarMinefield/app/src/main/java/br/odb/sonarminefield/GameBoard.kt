@@ -8,6 +8,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.RadioGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
     private var revealed: Boolean = false
@@ -20,6 +22,14 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
     private var playerAction = MinefieldOperations.POKE
     private var pressTime: Long = 0
     private var releaseTime: Long = 0
+
+    enum class GameOutcome {
+        kPlaying,
+        kWon,
+        kLost
+    }
+
+    val outcome = MutableLiveData<GameOutcome>()
 
     constructor(appContext: Context, attrs: AttributeSet?, defStyle: Int) : super(
         appContext,
@@ -96,6 +106,8 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
         lastTouchPosition = Position2D()
         playerAction = MinefieldOperations.POKE
         setOnTouchListener(this)
+
+        outcome.value = GameOutcome.kPlaying
     }
 
     fun setSession(session: GameSession?) {
@@ -183,7 +195,7 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
                         invalidate()
                         return true
                     } else {
-                        gameSession!!.poke(downX, downY)
+                        outcome.value = gameSession!!.poke(downX, downY)
                     }
                     pressTime = -1
                     releaseTime = -1
@@ -200,28 +212,29 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
 
         lastTouchPosition!!.x = event.x.toInt()
         lastTouchPosition!!.y = event.y.toInt()
-        if (gameSession!!.isFinished) {
+
+        if (outcome.value != GameOutcome.kPlaying) {
             revealAll()
-            postDelayed(FinishGameRunnable(), 5000)
         }
-        if (cameraPosition!!.x < -width + smaller) cameraPosition!!.x = (-width + smaller)
-        if (cameraPosition!!.y < -height + smaller) cameraPosition!!.y =
-            (-height + smaller)
-        if (cameraPosition!!.x > this.width - smaller) cameraPosition!!.x =
-            (width - smaller)
-        if (cameraPosition!!.y > this.height - smaller) cameraPosition!!.y =
-            (height - smaller)
+
+        if (cameraPosition!!.x < (- smaller)) {
+            cameraPosition!!.x = (- smaller)
+        }
+
+        if (cameraPosition!!.y < (- smaller)) {
+            cameraPosition!!.y = (- smaller)
+        }
+
+        if (cameraPosition!!.x > (this.width + smaller)) {
+            cameraPosition!!.x = (width + smaller)
+        }
+
+        if (cameraPosition!!.y > (this.height + smaller)) {
+            cameraPosition!!.y = (height + smaller)
+        }
+
         this.invalidate()
         return true
-    }
-
-    private inner class FinishGameRunnable : Runnable {
-        override fun run() {
-            val intent = manager!!.intent
-            intent.putExtra("result", if (gameSession!!.isVictory) "victory" else "failure")
-            manager!!.setResult(Activity.RESULT_OK, intent)
-            manager!!.finish()
-        }
     }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {

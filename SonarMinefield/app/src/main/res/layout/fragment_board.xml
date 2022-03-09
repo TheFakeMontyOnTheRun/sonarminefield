@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".BoardFragment">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-
-
-    <view
-        android:id="@+id/gmField"
-        android:layout_weight="5"
-        class="br.odb.sonarminefield.GameBoard"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000" />
+        android:orientation="horizontal"
+        tools:context=".BoardFragment">
 
+        <view
+            android:id="@+id/gmField"
+            class="br.odb.sonarminefield.GameBoard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="#000" />
 
+        <RadioGroup
+            android:id="@+id/rdoActions"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:clickable="true">
 
-    <RadioGroup
-        android:id="@+id/rdoActions"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:clickable="true">
+            <RadioButton
+                android:id="@+id/rdoReveal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:clickable="true"
+                android:enabled="true"
+                android:text="Reveal"
+                android:textColor="#000000" />
 
-        <RadioButton
-            android:id="@+id/rdoReveal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:clickable="true"
-            android:enabled="true"
-            android:text="Reveal"
-            android:textColor="#000000" />
+            <RadioButton
+                android:id="@+id/rdoFlag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:enabled="true"
+                android:text="Flag" />
 
-        <RadioButton
-            android:id="@+id/rdoFlag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:enabled="true"
-            android:text="Flag" />
-
-        <RadioButton
-            android:id="@+id/rdoBrowse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:enabled="true"
-            android:text="Browse" />
-    </RadioGroup>
-</androidx.appcompat.widget.LinearLayoutCompat>
+            <RadioButton
+                android:id="@+id/rdoBrowse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:enabled="true"
+                android:text="Browse" />
+        </RadioGroup>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

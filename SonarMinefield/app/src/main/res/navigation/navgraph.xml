@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/titleScreenFragment">
+
+    <fragment
+        android:id="@+id/titleScreenFragment"
+        android:name="br.odb.sonarminefield.TitleScreenFragment"
+        android:label="title_screen_fragment"
+        tools:layout="@layout/title_screen_fragment">
+        <action
+            android:id="@+id/action_titleScreenFragment_to_boardFragment"
+            app:destination="@id/boardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="br.odb.sonarminefield.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board">
+        <action
+            android:id="@+id/action_boardFragment_to_outcomeFragment"
+            app:destination="@id/outcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/outcomeFragment"
+        android:name="br.odb.sonarminefield.OutcomeFragment"
+        android:label="fragment_outcome"
+        tools:layout="@layout/outcome_fragment" />
+</navigation>

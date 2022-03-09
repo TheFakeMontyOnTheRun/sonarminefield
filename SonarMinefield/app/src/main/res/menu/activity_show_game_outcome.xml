@@ -1,6 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/menu_settings_outcome"
-        android:orderInCategory="100"
-        android:title="@string/outcome_activity_option_back" />
-</menu>

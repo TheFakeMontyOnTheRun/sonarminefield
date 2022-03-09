@@ -15,7 +15,6 @@ class GameSession {
     private val flagged: Array<BooleanArray?>
     private var remainingTilesToClear: Int
     private var mines = 0
-    private var gameState = 0
 
     val width = 10
     val height = 15
@@ -26,8 +25,6 @@ class GameSession {
         const val POSITION_MINE_POKED = 11
         const val POSITION_FLAGGED = 12
         const val POSITION_BLANK = 0
-        const val GAME_STATE_FINISHED = 2
-        const val GAME_STATE_GAME_OVER = 3
     }
 
     fun placeRandomMines(n: Int) {
@@ -72,17 +69,18 @@ class GameSession {
         return if (x < 0 || x >= width || y < 0 || y >= height) POSITION_BLANK else map[y]!![x]
     }
 
-    fun poke(x: Int, y: Int) {
-        if (x < 0 || x >= width || y < 0 || y >= height) return
+    fun poke(x: Int, y: Int) : GameBoard.GameOutcome {
+
+        if (x < 0 || x >= width || y < 0 || y >= height) return GameBoard.GameOutcome.kPlaying
+
         if (flagged[y]!![x]) {
             flagged[y]!![x] = false
-            return
+            return GameBoard.GameOutcome.kPlaying
         }
         when (map[y]!![x]) {
             POSITION_MINE -> {
                 map[y]!![x] = POSITION_MINE_POKED
-                gameState = GAME_STATE_GAME_OVER
-                return
+                return GameBoard.GameOutcome.kLost
             }
             POSITION_BLANK -> {
                 floodUncover(x, y)
@@ -96,7 +94,10 @@ class GameSession {
                 covered[y]!![x] = false
             }
         }
-        if (remainingTilesToClear == mines) gameState = GAME_STATE_FINISHED
+        if (remainingTilesToClear == mines) return GameBoard.GameOutcome.kWon
+
+
+        return GameBoard.GameOutcome.kPlaying
     }
 
     private fun floodUncover(x: Int, y: Int) {
@@ -119,11 +120,6 @@ class GameSession {
             }
         }
     }
-
-    val isFinished: Boolean
-        get() = gameState == GAME_STATE_GAME_OVER || isVictory
-    val isVictory: Boolean
-        get() = gameState == GAME_STATE_FINISHED
 
     fun uncoverAt(x: Int, y: Int) {
         if (isValid(x, y)) {

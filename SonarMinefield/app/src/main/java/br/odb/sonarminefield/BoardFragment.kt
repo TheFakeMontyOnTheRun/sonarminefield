@@ -1,11 +1,15 @@
 package br.odb.sonarminefield
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
+import androidx.core.os.HandlerCompat.postDelayed
+import androidx.navigation.fragment.findNavController
 
 private const val ARG_NUM_MINES = "mines"
 
@@ -36,6 +40,16 @@ class BoardFragment : Fragment() {
         gameBoard = root.findViewById(R.id.gmField)
         gameBoard!!.setSession(session)
         gameBoard!!.postInvalidate()
+
+        gameBoard!!.outcome.observe(viewLifecycleOwner) {
+            if (it != GameBoard.GameOutcome.kPlaying) {
+                Looper.myLooper()?.let { it1 ->
+                    Handler(it1).postDelayed({
+                        findNavController().navigate(BoardFragmentDirections.actionBoardFragmentToOutcomeFragment())
+                    }, 5000)
+                }
+            }
+        }
 
         root.findViewById<RadioGroup>(R.id.rdoActions).setOnCheckedChangeListener(gameBoard)
 
