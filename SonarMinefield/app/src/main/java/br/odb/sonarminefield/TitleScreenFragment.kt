@@ -26,7 +26,7 @@ class TitleScreenFragment : Fragment() {
         )
 //        viewModel = ViewModelProvider(this).get(TitleScreenViewModel::class.java)
         binding.btnPlay.setOnClickListener {
-            findNavController().navigate(TitleScreenFragmentDirections.actionTitleScreenFragmentToBoardFragment())
+            findNavController().navigate(TitleScreenFragmentDirections.actionTitleScreenFragmentToBoardFragment(27, 50))
         }
 
         return binding.root

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import androidx.core.os.HandlerCompat.postDelayed
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 private const val ARG_NUM_MINES = "mines"
 
@@ -31,11 +32,13 @@ class BoardFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+        val root = inflater.inflate(R.layout.fragment_board, container, false)
+        val gameArgs by navArgs<BoardFragmentArgs>()
+        mines = gameArgs.mines
+
         session = GameSession()
         session!!.placeRandomMines(mines)
         session!!.clearBorders()
-
-        val root = inflater.inflate(R.layout.fragment_board, container, false)
 
         gameBoard = root.findViewById(R.id.gmField)
         gameBoard!!.setSession(session)

@@ -22,10 +22,22 @@
         <action
             android:id="@+id/action_boardFragment_to_outcomeFragment"
             app:destination="@id/outcomeFragment" />
+        <argument
+            android:name="mines"
+            app:argType="integer"
+            android:defaultValue="20" />
+        <argument
+            android:name="size"
+            app:argType="integer"
+            android:defaultValue="50" />
     </fragment>
     <fragment
         android:id="@+id/outcomeFragment"
         android:name="br.odb.sonarminefield.OutcomeFragment"
         android:label="fragment_outcome"
-        tools:layout="@layout/outcome_fragment" />
+        tools:layout="@layout/outcome_fragment" >
+        <action
+            android:id="@+id/action_outcomeFragment_to_titleScreenFragment"
+            app:destination="@id/titleScreenFragment" />
+    </fragment>
 </navigation>
