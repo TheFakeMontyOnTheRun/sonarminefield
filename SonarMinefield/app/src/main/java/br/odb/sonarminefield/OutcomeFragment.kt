@@ -28,7 +28,13 @@ class OutcomeFragment : Fragment() {
             false
         )
 
-        binding.tvOutcome.text = if (outcome) "Game Over!" else "Won!"
+        if (outcome) {
+            binding.imageView.setImageResource( R.drawable.minespokedvg )
+            binding.tvOutcome.text = "Game Over!"
+        } else  {
+            binding.imageView.setImageResource( R.drawable.blanksvg )
+            binding.tvOutcome.text = "Victory!"
+        }
 
         return binding.root
     }
