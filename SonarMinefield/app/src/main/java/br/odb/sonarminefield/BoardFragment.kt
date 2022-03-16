@@ -25,7 +25,7 @@ class BoardFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
-            mines = it.getString(ARG_NUM_MINES)?.toInt() ?: 20
+            mines = it.getInt(ARG_NUM_MINES)
         }
     }
 
