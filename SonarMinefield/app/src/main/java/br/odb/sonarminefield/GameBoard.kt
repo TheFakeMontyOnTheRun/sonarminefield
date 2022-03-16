@@ -10,6 +10,7 @@ import android.view.View.OnTouchListener
 import android.widget.RadioGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import kotlin.math.ceil
 
 class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
     private var revealed: Boolean = false
@@ -177,6 +178,7 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
         touch.x = (cameraPosition!!.x + event.x).toInt()
         touch.y = (cameraPosition!!.y + event.y).toInt()
         val smaller: Int = if (newWidth <= newHeight) newHeight else newWidth
+        val bigger: Int = if (newWidth > newHeight) newHeight else newWidth
         downX = (touch.x / smaller)
         downY = (touch.y / smaller)
 
@@ -225,12 +227,15 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
             cameraPosition!!.y = (- smaller)
         }
 
-        if (cameraPosition!!.x > (this.width + smaller)) {
-            cameraPosition!!.x = (width + smaller)
+        if (cameraPosition!!.x > (this.width - ((gameSession!!.width - 1 ) * smaller))) {
+            cameraPosition!!.x = (width - ((gameSession!!.width  - 1) * smaller))
         }
 
-        if (cameraPosition!!.y > (this.height + smaller)) {
-            cameraPosition!!.y = (height + smaller)
+
+        val heightInTiles = ceil((height / smaller).toDouble()).toInt()
+
+        if (cameraPosition!!.y > (((gameSession!!.height - heightInTiles + 1) * smaller))) {
+            cameraPosition!!.y = (((gameSession!!.height  - heightInTiles + 1) * smaller))
         }
 
         this.invalidate()
