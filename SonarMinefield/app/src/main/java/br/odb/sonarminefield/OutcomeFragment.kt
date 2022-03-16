@@ -15,12 +15,21 @@ class OutcomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var outcome = false
+
+        arguments?.let {
+            outcome = it.getBoolean("isGameOver")
+        }
+
         val binding = DataBindingUtil.inflate<OutcomeFragmentBinding>(
             inflater,
             R.layout.outcome_fragment,
             container,
             false
         )
+
+        binding.tvOutcome.text = if (outcome) "Game Over!" else "Won!"
+
         return binding.root
     }
 }

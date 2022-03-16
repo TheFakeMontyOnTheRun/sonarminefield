@@ -48,7 +48,7 @@ class BoardFragment : Fragment() {
             if (it != GameBoard.GameOutcome.kPlaying) {
                 Looper.myLooper()?.let { it1 ->
                     Handler(it1).postDelayed({
-                        findNavController().navigate(BoardFragmentDirections.actionBoardFragmentToOutcomeFragment())
+                        findNavController().navigate(BoardFragmentDirections.actionBoardFragmentToOutcomeFragment(it == GameBoard.GameOutcome.kLost))
                     }, 5000)
                 }
             }
