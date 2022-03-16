@@ -48,7 +48,12 @@ class BoardFragment : Fragment() {
             if (it != GameBoard.GameOutcome.kPlaying) {
                 Looper.myLooper()?.let { it1 ->
                     Handler(it1).postDelayed({
-                        findNavController().navigate(BoardFragmentDirections.actionBoardFragmentToOutcomeFragment(it == GameBoard.GameOutcome.kLost))
+                        try {
+                            findNavController().navigate(BoardFragmentDirections.actionBoardFragmentToOutcomeFragment(it == GameBoard.GameOutcome.kLost))
+                        } catch( e: Exception ) {
+                            //the fragment is already detached. Nothing to do
+                            e.printStackTrace()
+                        }
                     }, 5000)
                 }
             }
