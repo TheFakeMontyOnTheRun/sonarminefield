@@ -1,11 +1,14 @@
 package br.odb.sonarminefield
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import br.odb.sonarminefield.databinding.OutcomeFragmentBinding
 
 class OutcomeFragment : Fragment() {
@@ -35,6 +38,13 @@ class OutcomeFragment : Fragment() {
             binding.imageView.setImageResource( R.drawable.blanksvg )
             binding.tvOutcome.text = "Victory!"
         }
+
+        Looper.myLooper()?.let { it1 ->
+            Handler(it1).postDelayed({
+                findNavController().popBackStack()
+            }, 5000)
+        }
+
 
         return binding.root
     }
