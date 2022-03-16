@@ -21,7 +21,8 @@
         tools:layout="@layout/fragment_board">
         <action
             android:id="@+id/action_boardFragment_to_outcomeFragment"
-            app:destination="@id/outcomeFragment" />
+            app:destination="@id/outcomeFragment"
+            app:popUpTo="@id/titleScreenFragment" />
         <argument
             android:name="mines"
             app:argType="integer"
