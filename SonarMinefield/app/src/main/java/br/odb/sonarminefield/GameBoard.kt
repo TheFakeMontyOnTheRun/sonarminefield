@@ -1,6 +1,5 @@
 package br.odb.sonarminefield
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -8,7 +7,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.RadioGroup
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlin.math.ceil
 
