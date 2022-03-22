@@ -42,12 +42,13 @@ class OutcomeFragment : Fragment() {
         Looper.myLooper()?.let { it1 ->
             Handler(it1).postDelayed({
                 try {
-                    findNavController().popBackStack()
-                } catch (e : Exception ) {
-                    //the fragment is already detached. Nothing to do
+                    val self = OutcomeFragment@ this
+                    if (self.isVisible && !self.isRemoving && !self.isDetached) {
+                        findNavController().popBackStack()
+                    }
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
-
             }, 5000)
         }
 
