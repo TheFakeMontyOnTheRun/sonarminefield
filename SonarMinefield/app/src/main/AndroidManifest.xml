@@ -9,6 +9,7 @@
     <application
         android:icon="@mipmap/game_icon"
         android:label="@string/app_name"
+        android:isGame="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
         <activity
