@@ -4,4 +4,7 @@
     <string name="title_activity_play_game">Clear the minefield!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="browse">Browse</string>
+    <string name="reveal">Reveal</string>
+    <string name="flag">Flag</string>
 </resources>

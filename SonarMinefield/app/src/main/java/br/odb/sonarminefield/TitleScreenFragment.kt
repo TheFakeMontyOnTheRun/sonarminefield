@@ -12,37 +12,39 @@ import br.odb.sonarminefield.databinding.TitleScreenFragmentBinding
 
 class TitleScreenFragment : Fragment() {
 
-//    private lateinit var viewModel: TitleScreenViewModel
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		val binding = DataBindingUtil.inflate<TitleScreenFragmentBinding>(
+			inflater,
+			R.layout.title_screen_fragment,
+			container,
+			false
+		)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = DataBindingUtil.inflate<TitleScreenFragmentBinding>(
-            inflater,
-            R.layout.title_screen_fragment,
-            container,
-            false
-        )
-//        viewModel = ViewModelProvider(this).get(TitleScreenViewModel::class.java)
+		binding.skMines.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+			override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+				binding.tvMines.text = "Playing with ${binding.skMines.progress + 20} mines"
+			}
 
-        binding.skMines.setOnSeekBarChangeListener( object : SeekBar.OnSeekBarChangeListener  {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding.tvMines.text = "Playing with ${binding.skMines.progress + 20 } mines"
-            }
+			override fun onStartTrackingTouch(seekBar: SeekBar?) {
+			}
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-            }
+			override fun onStopTrackingTouch(seekBar: SeekBar?) {
+			}
+		})
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-            }
-        })
+		binding.btnPlay.setOnClickListener {
+			findNavController().navigate(
+				TitleScreenFragmentDirections.actionTitleScreenFragmentToBoardFragment(
+					binding.skMines.progress + 20,
+					50
+				)
+			)
+		}
 
-        binding.btnPlay.setOnClickListener {
-            findNavController().navigate(TitleScreenFragmentDirections.actionTitleScreenFragmentToBoardFragment(binding.skMines.progress + 20, 50))
-        }
-
-        return binding.root
-    }
+		return binding.root
+	}
 }

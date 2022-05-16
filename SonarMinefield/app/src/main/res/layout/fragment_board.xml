@@ -28,7 +28,8 @@
             android:clickable="true"
             android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:focusable="true">
 
             <RadioButton
                 android:id="@+id/rdoReveal"
@@ -37,8 +38,10 @@
                 android:checked="true"
                 android:clickable="true"
                 android:enabled="true"
-                android:text="Reveal"
-                android:textColor="#000000" />
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:text="@string/reveal"
+                android:textColor="#00796B" />
 
             <RadioButton
                 android:id="@+id/rdoFlag"
@@ -46,7 +49,9 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:enabled="true"
-                android:text="Flag" />
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:text="@string/flag" />
 
             <RadioButton
                 android:id="@+id/rdoBrowse"
@@ -54,7 +59,9 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:enabled="true"
-                android:text="Browse" />
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:text="@string/browse" />
         </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

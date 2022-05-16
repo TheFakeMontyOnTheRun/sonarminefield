@@ -12,47 +12,46 @@ import androidx.navigation.fragment.findNavController
 import br.odb.sonarminefield.databinding.OutcomeFragmentBinding
 
 class OutcomeFragment : Fragment() {
-    
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        var outcome = false
 
-        arguments?.let {
-            outcome = it.getBoolean("isGameOver")
-        }
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		var outcome = false
 
-        val binding = DataBindingUtil.inflate<OutcomeFragmentBinding>(
-            inflater,
-            R.layout.outcome_fragment,
-            container,
-            false
-        )
+		arguments?.let {
+			outcome = it.getBoolean("isGameOver")
+		}
 
-        if (outcome) {
-            binding.imageView.setImageResource(R.drawable.minespokedvg)
-            binding.tvOutcome.text = "Game Over!"
-        } else {
-            binding.imageView.setImageResource(R.drawable.blanksvg)
-            binding.tvOutcome.text = "Victory!"
-        }
+		val binding = DataBindingUtil.inflate<OutcomeFragmentBinding>(
+			inflater,
+			R.layout.outcome_fragment,
+			container,
+			false
+		)
 
-        Looper.myLooper()?.let { it1 ->
-            Handler(it1).postDelayed({
-                try {
-                    val self = OutcomeFragment@ this
-                    if (self.isVisible && !self.isRemoving && !self.isDetached) {
-                        findNavController().popBackStack()
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }, 5000)
-        }
+		if (outcome) {
+			binding.imageView.setImageResource(R.drawable.minespokedvg)
+			binding.tvOutcome.text = "Game Over!"
+		} else {
+			binding.imageView.setImageResource(R.drawable.blanksvg)
+			binding.tvOutcome.text = "Victory!"
+		}
+
+		Looper.myLooper()?.let { it1 ->
+			Handler(it1).postDelayed({
+				try {
+					if (isVisible && !isRemoving && !isDetached) {
+						findNavController().popBackStack()
+					}
+				} catch (e: Exception) {
+					e.printStackTrace()
+				}
+			}, 5000)
+		}
 
 
-        return binding.root
-    }
+		return binding.root
+	}
 }
