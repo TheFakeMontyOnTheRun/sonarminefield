@@ -13,45 +13,45 @@ import br.odb.sonarminefield.databinding.OutcomeFragmentBinding
 
 class OutcomeFragment : Fragment() {
 
-	override fun onCreateView(
-		inflater: LayoutInflater,
-		container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View {
-		var outcome = false
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        var outcome = false
 
-		arguments?.let {
-			outcome = it.getBoolean("isGameOver")
-		}
+        arguments?.let {
+            outcome = it.getBoolean("isGameOver")
+        }
 
-		val binding = DataBindingUtil.inflate<OutcomeFragmentBinding>(
-			inflater,
-			R.layout.outcome_fragment,
-			container,
-			false
-		)
+        val binding = DataBindingUtil.inflate<OutcomeFragmentBinding>(
+            inflater,
+            R.layout.outcome_fragment,
+            container,
+            false
+        )
 
-		if (outcome) {
-			binding.imageView.setImageResource(R.drawable.minespokedvg)
-			binding.tvOutcome.text = "Game Over!"
-		} else {
-			binding.imageView.setImageResource(R.drawable.blanksvg)
-			binding.tvOutcome.text = "Victory!"
-		}
+        if (outcome) {
+            binding.imageView.setImageResource(R.drawable.minespokedvg)
+            binding.tvOutcome.text = "Game Over!"
+        } else {
+            binding.imageView.setImageResource(R.drawable.blanksvg)
+            binding.tvOutcome.text = "Victory!"
+        }
 
-		Looper.myLooper()?.let { it1 ->
-			Handler(it1).postDelayed({
-				try {
-					if (isVisible && !isRemoving && !isDetached) {
-						findNavController().popBackStack()
-					}
-				} catch (e: Exception) {
-					e.printStackTrace()
-				}
-			}, 5000)
-		}
+        Looper.myLooper()?.let { it1 ->
+            Handler(it1).postDelayed({
+                try {
+                    if (isVisible && !isRemoving && !isDetached) {
+                        findNavController().popBackStack()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }, 5000)
+        }
 
 
-		return binding.root
-	}
+        return binding.root
+    }
 }

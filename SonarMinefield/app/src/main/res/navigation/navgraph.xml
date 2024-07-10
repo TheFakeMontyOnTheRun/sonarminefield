@@ -25,18 +25,18 @@
             app:popUpTo="@id/titleScreenFragment" />
         <argument
             android:name="mines"
-            app:argType="integer"
-            android:defaultValue="20" />
+            android:defaultValue="20"
+            app:argType="integer" />
         <argument
             android:name="size"
-            app:argType="integer"
-            android:defaultValue="50" />
+            android:defaultValue="50"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/outcomeFragment"
         android:name="br.odb.sonarminefield.OutcomeFragment"
         android:label="fragment_outcome"
-        tools:layout="@layout/outcome_fragment" >
+        tools:layout="@layout/outcome_fragment">
         <action
             android:id="@+id/action_outcomeFragment_to_titleScreenFragment"
             app:destination="@id/titleScreenFragment" />
