@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "br.odb.sonarminefield"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 35
         versionCode 8
     }
