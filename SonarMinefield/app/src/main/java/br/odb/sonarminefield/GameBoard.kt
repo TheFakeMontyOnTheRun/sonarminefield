@@ -11,11 +11,10 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
-import android.widget.RadioGroup
 import androidx.lifecycle.MutableLiveData
 import kotlin.math.ceil
 
-class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
+class GameBoard : View, OnTouchListener/*, RadioGroup.OnCheckedChangeListener*/ {
     private var revealed: Boolean = false
     private var smaller = 0
     private var gameSession: GameSession? = null
@@ -40,14 +39,18 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
         attrs,
         defStyle
     ) {
+        gameSession = GameSession()
         init(appContext)
+
     }
 
-    constructor(appContext: Context) : super(appContext) {
+    constructor(appContext: Context, session: GameSession) : super(appContext) {
+        gameSession = session
         init(appContext)
     }
 
     constructor(appContext: Context, set: AttributeSet?) : super(appContext, set) {
+        gameSession = GameSession()
         init(appContext)
     }
 
@@ -55,55 +58,55 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
         manager = appContext as PlayGameActivity
         palette = arrayOfNulls(13)
         palette[0] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.blanksvg
         )
         palette[1] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n1svg
         )
         palette[2] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n2svg
         )
         palette[3] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n3svg
         )
         palette[4] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n4svg
         )
         palette[5] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n5svg
         )
         palette[6] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n6svg
         )
         palette[7] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n7svg
         )
         palette[8] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.n8svg
         )
         palette[9] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.minesvg
         )
         palette[10] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.coveredsvg
         )
         palette[11] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.minespokedvg
         )
         palette[12] = BitmapFactory.decodeResource(
-            appContext.getResources(),
+            appContext.resources,
             R.drawable.flagged
         )
         cameraPosition = Position2D()
@@ -112,10 +115,6 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
         setOnTouchListener(this)
 
         outcome.value = GameOutcome.PLAYING
-    }
-
-    fun setSession(session: GameSession?) {
-        gameSession = session
     }
 
     override fun draw(canvas: Canvas) {
@@ -246,16 +245,16 @@ class GameBoard : View, OnTouchListener, RadioGroup.OnCheckedChangeListener {
         return true
     }
 
-    override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-        when (checkedId) {
-            R.id.rdoBrowse ->
-                playerAction = MinefieldOperations.MOVE
-
-            R.id.rdoFlag ->
-                playerAction = MinefieldOperations.FLAG
-
-            R.id.rdoReveal ->
-                playerAction = MinefieldOperations.POKE
-        }
-    }
+//    override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
+//        when (checkedId) {
+//            R.id.rdoBrowse ->
+//                playerAction = MinefieldOperations.MOVE
+//
+//            R.id.rdoFlag ->
+//                playerAction = MinefieldOperations.FLAG
+//
+//            R.id.rdoReveal ->
+//                playerAction = MinefieldOperations.POKE
+//        }
+//    }
 }
