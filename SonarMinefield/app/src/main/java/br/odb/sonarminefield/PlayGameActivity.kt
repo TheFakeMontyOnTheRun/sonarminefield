@@ -7,6 +7,10 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import br.odb.sonarminefield.ui.theme.SonarMinefieldTheme
@@ -18,10 +22,15 @@ class PlayGameActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val mines = intent.getIntExtra("mines", 10)
         Toast.makeText(this, "Playing with $mines", Toast.LENGTH_SHORT).show()
-        val gameSession = GameSession()
-        gameSession.placeRandomMines(mines)
+
         enableEdgeToEdge()
         setContent {
+            var gameSession by rememberSaveable {
+                mutableStateOf(GameSession().apply {
+                    placeRandomMines(mines)
+                })
+            }
+
             SonarMinefieldTheme {
                 GameBoard(gameSession)
             }

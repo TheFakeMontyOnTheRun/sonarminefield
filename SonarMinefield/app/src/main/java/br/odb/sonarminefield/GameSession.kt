@@ -1,11 +1,13 @@
 package br.odb.sonarminefield
 
+import android.os.Parcel
+import android.os.Parcelable
 import java.util.Random
 
 /**
  * @author monty
  */
-class GameSession {
+class GameSession : Parcelable {
     private val map: Array<IntArray?>
     private val covered: Array<BooleanArray?>
     private val flagged: Array<BooleanArray?>
@@ -15,7 +17,51 @@ class GameSession {
     val width = 10
     val height = 15
 
-    companion object {
+    //trivial constructor with no body. Yep, Kotlin is weird.
+    constructor()
+
+    constructor(parcel: Parcel)  {
+        mines = parcel.readInt()
+        remainingTilesToClear = parcel.readInt()
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                val cell = parcel.readInt()
+                map[y]!![x] = cell
+                if (parcel.readInt() == 1) {
+                    flag(x, y)
+                }
+
+                if (parcel.readInt() == 1) {
+                    uncoverAt(x, y)
+                }
+            }
+        }
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(mines)
+        parcel.writeInt(remainingTilesToClear)
+
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                parcel.writeInt(map[y]!![x])
+                parcel.writeInt(if (isFlaggedAt(x, y)) 1 else 0)
+                parcel.writeInt(if (isCoveredAt(x, y)) 1 else 0)
+            }
+        }
+    }
+
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<GameSession> {
+        override fun createFromParcel(parcel: Parcel): GameSession {
+            return GameSession(parcel)
+        }
+
+        override fun newArray(size: Int): Array<GameSession?> {
+            return arrayOfNulls(size)
+        }
+
         const val POSITION_MINE = 9
         const val POSITION_COVERED = 10
         const val POSITION_MINE_POKED = 11
